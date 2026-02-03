@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Andrii Iarmolenko Portfolio</title>
+    <title>Andrii Iarmolenko | Mechanical Engineering Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -181,7 +181,7 @@
         }
 
         .hero-description {
-            max-width: 700px;
+            max-width: 800px;
             font-size: 1.1rem;
             line-height: 1.8;
             color: var(--text);
@@ -434,6 +434,7 @@
             color: var(--text-dim);
             text-decoration: none;
             transition: color 0.3s ease;
+            word-break: break-word;
         }
 
         .contact-card a:hover {
@@ -475,7 +476,7 @@
     <nav>
         <ul>
             <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
+            <li><a href="#projects">Research & Projects</a></li>
             <li><a href="#resume">Resume</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
@@ -484,122 +485,116 @@
     <!-- About Section -->
     <section id="about">
         <h1 class="hero-title">ANDRII IARMOLENKO</h1>
-        <p class="hero-subtitle">Mechanical Engineering Graduate</p>
+        <p class="hero-subtitle">Mechanical Engineering Student</p>
         <p class="hero-description">
-            Passionate mechanical engineer with expertise in CAD design, thermodynamics, and manufacturing processes. 
-            Combining analytical problem-solving with hands-on experience to create innovative engineering solutions. 
-            Driven by the challenge of transforming complex concepts into practical, efficient designs.
+            Fourth-year mechanical engineering student at The City College of New York with strong analytical training in AI/ML, 
+            finite element analysis, fluid mechanics, heat transfer, and materials science. Experienced in CAD design, optical system 
+            optimization, and Arduino-based sensor systems. Currently working on wearable exoskeleton technology at the BIOWEAR Lab. 
+            Passionate about applying engineering principles to solve real-world problems through research and innovation.
         </p>
         <div class="tech-stack">
             <span class="tech-badge">SolidWorks</span>
+            <span class="tech-badge">Fusion 360</span>
             <span class="tech-badge">AutoCAD</span>
-            <span class="tech-badge">ANSYS</span>
+            <span class="tech-badge">Zemax</span>
             <span class="tech-badge">MATLAB</span>
+            <span class="tech-badge">LabVIEW</span>
             <span class="tech-badge">Python</span>
-            <span class="tech-badge">FEA Analysis</span>
-            <span class="tech-badge">CFD</span>
-            <span class="tech-badge">3D Printing</span>
+            <span class="tech-badge">C++</span>
+            <span class="tech-badge">FEA</span>
+            <span class="tech-badge">Arduino</span>
         </div>
     </section>
 
     <!-- Projects Section -->
     <section id="projects">
-        <h2>Featured Projects</h2>
+        <h2>Research & Projects</h2>
         <div class="projects-grid">
             <div class="project-card">
                 <span class="project-number">01</span>
-                <h3>Autonomous Robotic Arm</h3>
+                <h3>Wearable Exoskeleton Sensor System</h3>
                 <p>
-                    Designed and fabricated a 6-DOF robotic arm with precision control system. 
-                    Implemented inverse kinematics algorithms and integrated computer vision for 
-                    object detection and manipulation tasks.
+                    Developing Arduino-controlled sensing system for a wearable exoskeleton at BIOWEAR Lab. Designed 
+                    multiplexer layouts to interface multiple sensors with a single microcontroller, measuring resistance 
+                    and force at various points. Created 3D CAD models for sensor and electronics enclosures optimized 
+                    for protection, ergonomics, and ease of assembly.
                 </p>
                 <div class="project-tags">
-                    <span class="tag">SolidWorks</span>
                     <span class="tag">Arduino</span>
-                    <span class="tag">Python</span>
-                    <span class="tag">Computer Vision</span>
+                    <span class="tag">3D CAD</span>
+                    <span class="tag">Sensor Systems</span>
+                    <span class="tag">Data Acquisition</span>
                 </div>
             </div>
 
             <div class="project-card">
                 <span class="project-number">02</span>
-                <h3>Heat Exchanger Optimization</h3>
+                <h3>LiDAR Optical System Optimization</h3>
                 <p>
-                    Conducted thermal analysis and optimization of shell-and-tube heat exchanger 
-                    using CFD simulations. Achieved 23% improvement in heat transfer efficiency 
-                    through geometric modifications and flow optimization.
+                    Improved LiDAR accuracy using Varioptic liquid lenses and a two-lens optical system through NSF REU 
+                    program. Simulated and optimized optical configurations using Zemax and MATLAB. Enhanced signal processing 
+                    algorithms for detecting small, fast-moving targets. Optimized LabVIEW routines for real-time data 
+                    acquisition and control.
                 </p>
                 <div class="project-tags">
-                    <span class="tag">ANSYS Fluent</span>
-                    <span class="tag">CFD</span>
-                    <span class="tag">Thermodynamics</span>
+                    <span class="tag">Zemax</span>
                     <span class="tag">MATLAB</span>
+                    <span class="tag">LabVIEW</span>
+                    <span class="tag">Optical Systems</span>
+                    <span class="tag">Signal Processing</span>
                 </div>
             </div>
 
             <div class="project-card">
                 <span class="project-number">03</span>
-                <h3>Electric Vehicle Chassis Design</h3>
+                <h3>LiDAR System Simulation - MobilizeGreen Fellowship</h3>
                 <p>
-                    Led the chassis design for a Formula SAE electric vehicle. Performed FEA 
-                    stress analysis, achieved 15% weight reduction while maintaining structural 
-                    integrity and safety standards.
+                    Simulated and optimized LiDAR optical systems using Zemax and MATLAB during the MobilizeGreen Fellowship. 
+                    Collected and analyzed experimental data to select optimal optical configurations. Compared simulated 
+                    versus measured results and recommended design adjustments based on performance trade-offs.
                 </p>
                 <div class="project-tags">
-                    <span class="tag">SolidWorks</span>
-                    <span class="tag">FEA</span>
-                    <span class="tag">Composite Materials</span>
-                    <span class="tag">Manufacturing</span>
+                    <span class="tag">Zemax</span>
+                    <span class="tag">MATLAB</span>
+                    <span class="tag">Optical Design</span>
+                    <span class="tag">Data Analysis</span>
                 </div>
             </div>
 
             <div class="project-card">
                 <span class="project-number">04</span>
-                <h3>Automated Assembly Line</h3>
+                <h3>AI Model Ranking Using Gini Coefficient</h3>
                 <p>
-                    Developed a small-scale automated assembly system with conveyor belt, 
-                    pneumatic actuators, and PLC control. Integrated quality control sensors 
-                    and achieved 95% assembly accuracy.
+                    Developed methodology for ranking AI models using the Gini Coefficient as a performance metric. 
+                    Conducted statistical analysis and interpretation of ranking metrics. Presented research findings 
+                    at the Joint Mathematics Meeting, demonstrating novel approach to model evaluation and selection.
                 </p>
                 <div class="project-tags">
-                    <span class="tag">PLC Programming</span>
-                    <span class="tag">Pneumatics</span>
-                    <span class="tag">Automation</span>
-                    <span class="tag">Industrial Design</span>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <span class="project-number">05</span>
-                <h3>Wind Turbine Blade Analysis</h3>
-                <p>
-                    Performed aerodynamic analysis and structural optimization of wind turbine blades. 
-                    Used CFD to simulate airflow patterns and FEA for stress distribution under 
-                    various wind conditions.
-                </p>
-                <div class="project-tags">
-                    <span class="tag">CFD</span>
-                    <span class="tag">FEA</span>
-                    <span class="tag">Renewable Energy</span>
-                    <span class="tag">Composite Design</span>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <span class="project-number">06</span>
-                <h3>IoT-Enabled HVAC System</h3>
-                <p>
-                    Designed an intelligent HVAC control system with IoT sensors for temperature, 
-                    humidity, and air quality monitoring. Developed predictive algorithms for 
-                    energy-efficient climate control.
-                </p>
-                <div class="project-tags">
-                    <span class="tag">IoT</span>
                     <span class="tag">Python</span>
-                    <span class="tag">Data Analysis</span>
-                    <span class="tag">Control Systems</span>
+                    <span class="tag">TensorFlow</span>
+                    <span class="tag">Machine Learning</span>
+                    <span class="tag">Statistical Analysis</span>
                 </div>
+            </div>
+        </div>
+
+        <div style="margin-top: 4rem;">
+            <h3 style="font-family: 'Orbitron', sans-serif; font-size: 1.8rem; color: var(--accent); margin-bottom: 2rem;">Conference Presentations</h3>
+            <div class="resume-item">
+                <h4>Emerging Researchers National Conference</h4>
+                <p class="resume-meta">April 2025</p>
+                <p style="color: var(--text-dim); padding-left: 1.5rem;">
+                    Presented research on improving LiDAR precision using Varioptic liquid lenses and a two-lens system, 
+                    highlighting modeling, experimental validation, and data analysis.
+                </p>
+            </div>
+            <div class="resume-item">
+                <h4>Joint Mathematics Meeting</h4>
+                <p class="resume-meta">January 2024</p>
+                <p style="color: var(--text-dim); padding-left: 1.5rem;">
+                    Presented research on using the Gini Coefficient to rank AI models, including methodology, 
+                    statistical analysis, and interpretation of ranking metrics.
+                </p>
             </div>
         </div>
     </section>
@@ -612,49 +607,63 @@
             <div class="resume-section">
                 <h3>Education</h3>
                 <div class="resume-item">
-                    <h4>Bachelor of Science in Mechanical Engineering</h4>
-                    <p class="resume-meta">University Name | Expected Graduation: May 2025 | GPA: 3.8/4.0</p>
+                    <h4>Bachelor of Engineering, Mechanical Engineering</h4>
+                    <p class="resume-meta">The City College of New York (CCNY) | Expected December 2026 | GPA: 3.7/4.0</p>
                     <ul>
-                        <li>Dean's List: Fall 2022, Spring 2023, Fall 2023, Spring 2024</li>
-                        <li>Relevant Coursework: Thermodynamics, Fluid Mechanics, Machine Design, Manufacturing Processes, Control Systems, Heat Transfer, Materials Science</li>
-                        <li>Senior Capstone: Design and Analysis of Renewable Energy Systems</li>
+                        <li>Relevant Coursework: Heat Transfer, Thermodynamics, Fluid Mechanics, Computer-Aided Design, Materials Science, Finite Element Analysis</li>
+                        <li>Member: American Society of Mechanical Engineers (ASME), Tau Beta Pi</li>
                     </ul>
+                </div>
+                <div class="resume-item">
+                    <h4>Associate of Engineering Science</h4>
+                    <p class="resume-meta">Borough of Manhattan Community College (BMCC) | September 2022 - August 2024 | GPA: 4.0/4.0</p>
                 </div>
             </div>
 
             <!-- Experience -->
             <div class="resume-section">
-                <h3>Experience</h3>
-                <div class="resume-item">
-                    <h4>Engineering Intern</h4>
-                    <p class="resume-meta">ABC Manufacturing Co. | Summer 2024</p>
-                    <ul>
-                        <li>Assisted in design and testing of industrial machinery components using SolidWorks</li>
-                        <li>Conducted failure analysis and proposed design improvements that reduced part failure by 18%</li>
-                        <li>Collaborated with cross-functional teams on product development and manufacturing optimization</li>
-                        <li>Prepared technical documentation and presented findings to engineering management</li>
-                    </ul>
-                </div>
-
+                <h3>Research & Engineering Experience</h3>
                 <div class="resume-item">
                     <h4>Research Assistant</h4>
-                    <p class="resume-meta">University Robotics Lab | Jan 2023 - Present</p>
+                    <p class="resume-meta">BIOWEAR Lab, CCNY | October 2025 - Present</p>
                     <ul>
-                        <li>Developed control algorithms for autonomous mobile robots using MATLAB and Python</li>
-                        <li>Conducted experiments on sensor integration and data acquisition systems</li>
-                        <li>Co-authored research paper on robotic manipulation presented at student conference</li>
-                        <li>Maintained and calibrated laboratory testing equipment</li>
+                        <li>Develop Arduino-controlled sensing for a wearable exoskeleton, measuring resistance and force at multiple points</li>
+                        <li>Design sensor interconnections and multiplexer layouts to interface many sensors with one microcontroller</li>
+                        <li>Model and refine sensor and electronics enclosures in 3D CAD for protection, ergonomics, and assembly</li>
+                        <li>Support data acquisition, basic signal processing, and documentation of tests and results</li>
                     </ul>
                 </div>
 
                 <div class="resume-item">
-                    <h4>Team Lead - Formula SAE</h4>
-                    <p class="resume-meta">University Racing Team | Sep 2022 - May 2024</p>
+                    <h4>Research Student</h4>
+                    <p class="resume-meta">MobilizeGreen Fellowship, CCNY | June 2025 - August 2025</p>
                     <ul>
-                        <li>Led chassis design sub-team of 8 members in developing competitive electric race car</li>
-                        <li>Performed structural analysis using FEA to optimize weight and performance</li>
-                        <li>Managed project timeline, budget allocation, and material procurement</li>
-                        <li>Competed at international Formula SAE competition, placing 12th overall</li>
+                        <li>Simulated and optimized LiDAR optical systems using Zemax and MATLAB</li>
+                        <li>Collected and analyzed experimental data to select optimal optical configurations</li>
+                        <li>Compared simulated and measured results and recommended design adjustments</li>
+                        <li>Presented methods, results, and trade-offs in a final research presentation</li>
+                    </ul>
+                </div>
+
+                <div class="resume-item">
+                    <h4>Research Student</h4>
+                    <p class="resume-meta">NSF REU Program, CCNY | June 2024 - May 2025</p>
+                    <ul>
+                        <li>Improved LiDAR accuracy using Varioptic liquid lenses and a two-lens system</li>
+                        <li>Optimized LabVIEW routines for real-time data acquisition and control</li>
+                        <li>Enhanced MATLAB signal-processing scripts for detecting small, fast-moving targets</li>
+                        <li>Produced technical reports and weekly presentations for a multidisciplinary team</li>
+                    </ul>
+                </div>
+
+                <div class="resume-item">
+                    <h4>Plumber Mechanic</h4>
+                    <p class="resume-meta">Real Plumbing Corp., New York, NY | February 2015 - June 2018</p>
+                    <ul>
+                        <li>Promoted from apprentice to mechanic within 12 months</li>
+                        <li>Installed and serviced plumbing systems in commercial and residential buildings to code</li>
+                        <li>Diagnosed and resolved flow, pressure, and temperature issues in piping systems</li>
+                        <li>Coordinated with general contractors, HVAC teams, and electricians to keep projects on schedule</li>
                     </ul>
                 </div>
             </div>
@@ -664,30 +673,17 @@
                 <h3>Technical Skills</h3>
                 <div class="resume-item">
                     <ul>
-                        <li><strong>CAD Software:</strong> SolidWorks (CSWA Certified), AutoCAD, CATIA, Fusion 360</li>
-                        <li><strong>Analysis Tools:</strong> ANSYS (FEA/CFD), MATLAB, Simulink, LabVIEW</li>
-                        <li><strong>Programming:</strong> Python, C++, Arduino, MATLAB, G-Code</li>
-                        <li><strong>Manufacturing:</strong> CNC Machining, 3D Printing (FDM/SLA), Welding, Sheet Metal Fabrication</li>
-                        <li><strong>Technical:</strong> GD&T, Finite Element Analysis, Computational Fluid Dynamics, Control Systems, Thermodynamics</li>
-                        <li><strong>Software:</strong> MS Office Suite, Git, LaTeX, Adobe Creative Suite</li>
+                        <li><strong>CAD Software:</strong> SolidWorks, Fusion 360, AutoCAD</li>
+                        <li><strong>Engineering Analysis:</strong> Zemax (optical systems), MATLAB, LabVIEW, Finite Element Analysis (FEA)</li>
+                        <li><strong>Programming:</strong> Python (TensorFlow), C++, Arduino</li>
+                        <li><strong>Engineering Skills:</strong> 3D CAD modeling, engineering analysis, experimental design, data acquisition and processing, heat transfer and thermal analysis, optics and sensor systems</li>
+                        <li><strong>Software:</strong> Microsoft Office Suite</li>
+                        <li><strong>Languages:</strong> English (fluent), Ukrainian (fluent)</li>
                     </ul>
                 </div>
             </div>
 
-            <!-- Certifications -->
-            <div class="resume-section">
-                <h3>Certifications & Awards</h3>
-                <div class="resume-item">
-                    <ul>
-                        <li>Certified SolidWorks Associate (CSWA) - 2023</li>
-                        <li>OSHA 10-Hour Safety Certification - 2024</li>
-                        <li>First Place - University Engineering Design Competition 2024</li>
-                        <li>Engineering Excellence Scholarship Recipient - 2022, 2023, 2024</li>
-                    </ul>
-                </div>
-            </div>
-
-            <a href="#" class="download-btn">Download PDF Resume</a>
+            <a href="resume.pdf" class="download-btn">Download PDF Resume</a>
         </div>
     </section>
 
@@ -698,25 +694,19 @@
             <div class="contact-card">
                 <div class="contact-icon">📧</div>
                 <h3>Email</h3>
-                <a href="mailto:john.doe@email.com">john.doe@email.com</a>
+                <a href="mailto:aaiarmolenko@gmail.com">aaiarmolenko@gmail.com</a>
             </div>
 
             <div class="contact-card">
                 <div class="contact-icon">💼</div>
                 <h3>LinkedIn</h3>
-                <a href="https://linkedin.com/in/johndoe" target="_blank">linkedin.com/in/johndoe</a>
-            </div>
-
-            <div class="contact-card">
-                <div class="contact-icon">🐙</div>
-                <h3>GitHub</h3>
-                <a href="https://github.com/johndoe" target="_blank">github.com/johndoe</a>
+                <a href="https://linkedin.com/in/andrii-iarmolenko" target="_blank">linkedin.com/in/andrii-iarmolenko</a>
             </div>
 
             <div class="contact-card">
                 <div class="contact-icon">📱</div>
                 <h3>Phone</h3>
-                <a href="tel:+1234567890">+1 (234) 567-890</a>
+                <a href="tel:+13474176511">(347) 417-6511</a>
             </div>
         </div>
     </section>
