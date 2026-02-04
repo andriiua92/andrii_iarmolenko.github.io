@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -109,66 +109,43 @@
         section {
             min-height: 100vh;
             padding: 120px 2rem 80px;
-            max-width: 1200px;
-            margin: 0 auto;
             position: relative;
             z-index: 1;
             animation: fadeInUp 1s ease-out;
             animation-fill-mode: both;
         }
 
+        /* Container for content */
+        section > * {
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
         /* Progressive section backgrounds */
         #about {
             background: var(--bg-about);
-            margin-left: -100vw;
-            margin-right: -100vw;
-            padding-left: calc(100vw - 600px);
-            padding-right: calc(100vw - 600px);
         }
 
         #projects {
             background: var(--bg-projects);
-            margin-left: -100vw;
-            margin-right: -100vw;
-            padding-left: calc(100vw - 600px);
-            padding-right: calc(100vw - 600px);
             box-shadow: 0 -20px 60px rgba(0, 0, 0, 0.5);
         }
 
         #personal {
             background: var(--bg-personal);
-            margin-left: -100vw;
-            margin-right: -100vw;
-            padding-left: calc(100vw - 600px);
-            padding-right: calc(100vw - 600px);
             box-shadow: 0 -20px 60px rgba(0, 0, 0, 0.6);
         }
 
         #resume {
             background: var(--bg-resume);
-            margin-left: -100vw;
-            margin-right: -100vw;
-            padding-left: calc(100vw - 600px);
-            padding-right: calc(100vw - 600px);
             box-shadow: 0 -20px 60px rgba(0, 0, 0, 0.7);
         }
 
         #contact {
             background: var(--bg-contact);
-            margin-left: -100vw;
-            margin-right: -100vw;
-            padding-left: calc(100vw - 600px);
-            padding-right: calc(100vw - 600px);
             box-shadow: 0 -20px 60px rgba(0, 0, 0, 0.8);
             border-bottom: 2px solid var(--accent);
-        }
-
-        /* Responsive section padding */
-        @media (max-width: 1200px) {
-            #about, #projects, #personal, #resume, #contact {
-                padding-left: 2rem;
-                padding-right: 2rem;
-            }
         }
 
         section:nth-child(2) { animation-delay: 0.1s; }
@@ -194,10 +171,6 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-        }
-
-        #about > * {
-            max-width: 1200px;
         }
 
         .hero-title {
