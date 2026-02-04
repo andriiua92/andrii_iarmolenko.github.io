@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andrii Iarmolenko | Mechanical Engineering Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0a0e27;
+            --secondary: #1a1f3a;
+            --accent: #00d4ff;
+            --accent-warm: #ff6b35;
+            --text: #e8eaf6;
+            --text-dim: #9094a8;
+            --grid: rgba(0, 212, 255, 0.1);
+            
+            /* Section-specific colors */
+            --bg-about: linear-gradient(180deg, #0a0e27 0%, #0d1129 100%);
+            --bg-projects: linear-gradient(180deg, #0d1129 0%, #0f132b 100%);
+            --bg-personal: linear-gradient(180deg, #0f132b 0%, #11152d 100%);
+            --bg-resume: linear-gradient(180deg, #11152d 0%, #13172f 100%);
+            --bg-contact: linear-gradient(180deg, #13172f 0%, #050812 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'IBM Plex Mono', monospace;
+            background: var(--primary);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated grid background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(var(--grid) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--accent);
+            animation: slideDown 0.8s ease-out;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(5, 8, 18, 0.98);
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 1.5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 3rem;
+        }
+
+        nav a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Sections */
+        section {
+            min-height: 100vh;
+            padding: 120px 2rem 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease-out;
+            animation-fill-mode: both;
+        }
+
+        /* Progressive section backgrounds */
+        #about {
+            background: var(--bg-about);
+            margin-left: -100vw;
+            margin-right: -100vw;
+            padding-left: calc(100vw - 600px);
+            padding-right: calc(100vw - 600px);
+        }
+
+        #projects {
+            background: var(--bg-projects);
+            margin-left: -100vw;
+            margin-right: -100vw;
+            padding-left: calc(100vw - 600px);
+            padding-right: calc(100vw - 600px);
+            box-shadow: 0 -20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        #personal {
+            background: var(--bg-personal);
+            margin-left: -100vw;
+            margin-right: -100vw;
+            padding-left: calc(100vw - 600px);
+            padding-right: calc(100vw - 600px);
+            box-shadow: 0 -20px 60px rgba(0, 0, 0, 0.6);
+        }
+
+        #resume {
+            background: var(--bg-resume);
+            margin-left: -100vw;
+            margin-right: -100vw;
+            padding-left: calc(100vw - 600px);
+            padding-right: calc(100vw - 600px);
+            box-shadow: 0 -20px 60px rgba(0, 0, 0, 0.7);
+        }
+
+        #contact {
+            background: var(--bg-contact);
+            margin-left: -100vw;
+            margin-right: -100vw;
+            padding-left: calc(100vw - 600px);
+            padding-right: calc(100vw - 600px);
+            box-shadow: 0 -20px 60px rgba(0, 0, 0, 0.8);
+            border-bottom: 2px solid var(--accent);
+        }
+
+        /* Responsive section padding */
+        @media (max-width: 1200px) {
+            #about, #projects, #personal, #resume, #contact {
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
+        }
+
+        section:nth-child(2) { animation-delay: 0.1s; }
+        section:nth-child(3) { animation-delay: 0.2s; }
+        section:nth-child(4) { animation-delay: 0.3s; }
+        section:nth-child(5) { animation-delay: 0.4s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Hero Section */
+        #about {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        #about > * {
+            max-width: 1200px;
+        }
+
+        .hero-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-warm) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.3));
+            }
+            to {
+                filter: drop-shadow(0 0 40px rgba(0, 212, 255, 0.6));
+            }
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: var(--text-dim);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .hero-description {
+            max-width: 800px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text);
+            margin-bottom: 3rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .tech-badge {
+            background: var(--secondary);
+            padding: 0.6rem 1.2rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            border: 1px solid var(--accent);
+            transition: all 0.3s ease;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .tech-badge:hover {
+            background: var(--accent);
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0, 212, 255, 0.4);
+        }
+
+        /* Section Headers */
+        h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 3rem;
+            color: var(--accent);
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), transparent);
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: var(--secondary);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            padding: 2rem;
+            border-radius: 8px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .project-card:hover::before {
+            left: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.3);
+        }
+
+        .project-number {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+            color: rgba(0, 212, 255, 0.2);
+            position: absolute;
+            top: 10px;
+            right: 20px;
+        }
+
+        .project-card h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .project-card p {
+            color: var(--text-dim);
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            background: rgba(0, 212, 255, 0.1);
+            color: var(--accent);
+            padding: 0.3rem 0.8rem;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+        }
+
+        /* Resume Section */
+        .resume-container {
+            background: var(--secondary);
+            border: 1px solid var(--accent);
+            border-radius: 8px;
+            padding: 3rem;
+            margin-top: 2rem;
+        }
+
+        .resume-section {
+            margin-bottom: 3rem;
+        }
+
+        .resume-section h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--accent);
+            padding-left: 1rem;
+        }
+
+        .resume-item {
+            margin-bottom: 2rem;
+            padding-left: 1rem;
+            border-left: 2px solid rgba(0, 212, 255, 0.2);
+            transition: border-color 0.3s ease;
+        }
+
+        .resume-item:hover {
+            border-left-color: var(--accent);
+        }
+
+        .resume-item h4 {
+            font-size: 1.3rem;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+
+        .resume-meta {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .resume-item ul {
+            list-style: none;
+            padding-left: 1rem;
+        }
+
+        .resume-item li {
+            color: var(--text-dim);
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .resume-item li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+
+        .download-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent), var(--accent-warm));
+            color: var(--primary);
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            font-family: 'Orbitron', sans-serif;
+            margin-top: 2rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4);
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-card {
+            background: var(--secondary);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .contact-card h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card a {
+            color: var(--text-dim);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            word-break: break-word;
+        }
+
+        .contact-card a:hover {
+            color: var(--accent);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1.5rem;
+                padding: 1rem;
+            }
+
+            nav a {
+                font-size: 0.8rem;
+            }
+
+            section {
+                padding: 100px 1.5rem 60px;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .resume-container {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Research & Projects</a></li>
+            <li><a href="#personal">Personal</a></li>
+            <li><a href="#resume">Resume</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- About Section -->
+    <section id="about">
+        <h1 class="hero-title">ANDRII IARMOLENKO</h1>
+        <p class="hero-subtitle">Mechanical Engineering Student</p>
+        <p class="hero-description">
+            Fourth-year mechanical engineering student at The City College of New York with strong analytical training in AI/ML, 
+            finite element analysis, fluid mechanics, heat transfer, and materials science. Experienced in CAD design, optical system 
+            optimization, and Arduino-based sensor systems. Currently working on wearable exoskeleton technology at the BIOWEAR Lab. 
+            Passionate about applying engineering principles to solve real-world problems through research and innovation.
+        </p>
+        <div class="tech-stack">
+            <span class="tech-badge">SolidWorks</span>
+            <span class="tech-badge">Fusion 360</span>
+            <span class="tech-badge">AutoCAD</span>
+            <span class="tech-badge">Zemax</span>
+            <span class="tech-badge">MATLAB</span>
+            <span class="tech-badge">LabVIEW</span>
+            <span class="tech-badge">Python</span>
+            <span class="tech-badge">C++</span>
+            <span class="tech-badge">FEA</span>
+            <span class="tech-badge">Arduino</span>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2>Research & Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <span class="project-number">01</span>
+                <h3>Wearable Exoskeleton Sensor System</h3>
+                <p>
+                    Developing Arduino-controlled sensing system for a wearable exoskeleton at BIOWEAR Lab. Designed 
+                    multiplexer layouts to interface multiple sensors with a single microcontroller, measuring resistance 
+                    and force at various points. Created 3D CAD models for sensor and electronics enclosures optimized 
+                    for protection, ergonomics, and ease of assembly.
+                </p>
+                <div class="project-tags">
+                    <span class="tag">Arduino</span>
+                    <span class="tag">3D CAD</span>
+                    <span class="tag">Sensor Systems</span>
+                    <span class="tag">Data Acquisition</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <span class="project-number">02</span>
+                <h3>LiDAR Optical System Optimization</h3>
+                <p>
+                    Improved LiDAR accuracy using Varioptic liquid lenses and a two-lens optical system through NSF REU 
+                    program. Simulated and optimized optical configurations using Zemax and MATLAB. Enhanced signal processing 
+                    algorithms for detecting small, fast-moving targets. Optimized LabVIEW routines for real-time data 
+                    acquisition and control.
+                </p>
+                <div class="project-tags">
+                    <span class="tag">Zemax</span>
+                    <span class="tag">MATLAB</span>
+                    <span class="tag">LabVIEW</span>
+                    <span class="tag">Optical Systems</span>
+                    <span class="tag">Signal Processing</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <span class="project-number">03</span>
+                <h3>LiDAR System Simulation - MobilizeGreen Fellowship</h3>
+                <p>
+                    Simulated and optimized LiDAR optical systems using Zemax and MATLAB during the MobilizeGreen Fellowship. 
+                    Collected and analyzed experimental data to select optimal optical configurations. Compared simulated 
+                    versus measured results and recommended design adjustments based on performance trade-offs.
+                </p>
+                <div class="project-tags">
+                    <span class="tag">Zemax</span>
+                    <span class="tag">MATLAB</span>
+                    <span class="tag">Optical Design</span>
+                    <span class="tag">Data Analysis</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <span class="project-number">04</span>
+                <h3>AI Model Ranking Using Gini Coefficient</h3>
+                <p>
+                    Developed methodology for ranking AI models using the Gini Coefficient as a performance metric. 
+                    Conducted statistical analysis and interpretation of ranking metrics. Presented research findings 
+                    at the Joint Mathematics Meeting, demonstrating novel approach to model evaluation and selection.
+                </p>
+                <div class="project-tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">TensorFlow</span>
+                    <span class="tag">Machine Learning</span>
+                    <span class="tag">Statistical Analysis</span>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top: 4rem;">
+            <h3 style="font-family: 'Orbitron', sans-serif; font-size: 1.8rem; color: var(--accent); margin-bottom: 2rem;">Conference Presentations</h3>
+            <div class="resume-item">
+                <h4>Emerging Researchers National Conference</h4>
+                <p class="resume-meta">April 2025</p>
+                <p style="color: var(--text-dim); padding-left: 1.5rem;">
+                    Presented research on improving LiDAR precision using Varioptic liquid lenses and a two-lens system, 
+                    highlighting modeling, experimental validation, and data analysis.
+                </p>
+            </div>
+            <div class="resume-item">
+                <h4>Joint Mathematics Meeting</h4>
+                <p class="resume-meta">January 2024</p>
+                <p style="color: var(--text-dim); padding-left: 1.5rem;">
+                    Presented research on using the Gini Coefficient to rank AI models, including methodology, 
+                    statistical analysis, and interpretation of ranking metrics.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Personal Section -->
+    <section id="personal">
+        <h2>Beyond Engineering</h2>
+        
+        <div style="margin-bottom: 4rem;">
+            <h3 style="font-family: 'Orbitron', sans-serif; font-size: 1.8rem; color: var(--accent); margin-bottom: 2rem;">Personal Projects</h3>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <span class="project-number">🛠️</span>
+                    <h3>3D Printed Workshop Solutions</h3>
+                    <p>
+                        Designed and fabricated custom workspace organizers using CAD and 3D printing. Created phone stands, 
+                        laptop stands, and tool organizers optimized for ergonomics and efficient use of space. Each piece 
+                        is iteratively refined based on daily use and practical feedback.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">CAD Design</span>
+                        <span class="tag">3D Printing</span>
+                        <span class="tag">Product Design</span>
+                        <span class="tag">Prototyping</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <span class="project-number">🚁</span>
+                    <h3>FPV Drone Building & Flying</h3>
+                    <p>
+                        Build and fly various types of FPV (First-Person View) drones, from racing quads to freestyle rigs. 
+                        Experience with drone assembly, flight controller tuning, soldering electronics, and troubleshooting 
+                        technical issues. Passionate about the intersection of mechanical design, electronics, and flight dynamics.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">Electronics</span>
+                        <span class="tag">Flight Dynamics</span>
+                        <span class="tag">Assembly</span>
+                        <span class="tag">Troubleshooting</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <h3 style="font-family: 'Orbitron', sans-serif; font-size: 1.8rem; color: var(--accent); margin-bottom: 2rem;">Hobbies & Interests</h3>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">🚴</div>
+                    <h3>Cycling</h3>
+                    <p style="color: var(--text-dim); padding: 0 1rem;">Exploring NYC and beyond on two wheels</p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">🧗</div>
+                    <h3>Rock Climbing</h3>
+                    <p style="color: var(--text-dim); padding: 0 1rem;">Indoor bouldering and outdoor climbing adventures</p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">⛺</div>
+                    <h3>Camping</h3>
+                    <p style="color: var(--text-dim); padding: 0 1rem;">Wilderness backpacking and outdoor exploration</p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">🏂</div>
+                    <h3>Snowboarding</h3>
+                    <p style="color: var(--text-dim); padding: 0 1rem;">Carving down mountain slopes in winter</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume Section -->
+    <section id="resume">
+        <h2>Resume</h2>
+        <div class="resume-container">
+            <!-- Education -->
+            <div class="resume-section">
+                <h3>Education</h3>
+                <div class="resume-item">
+                    <h4>Bachelor of Engineering, Mechanical Engineering</h4>
+                    <p class="resume-meta">The City College of New York (CCNY) | Expected December 2026 | GPA: 3.7/4.0</p>
+                    <ul>
+                        <li>Relevant Coursework: Heat Transfer, Thermodynamics, Fluid Mechanics, Computer-Aided Design, Materials Science, Finite Element Analysis</li>
+                        <li>Member: American Society of Mechanical Engineers (ASME), Tau Beta Pi</li>
+                    </ul>
+                </div>
+                <div class="resume-item">
+                    <h4>Associate of Engineering Science</h4>
+                    <p class="resume-meta">Borough of Manhattan Community College (BMCC) | September 2022 - August 2024 | GPA: 4.0/4.0</p>
+                </div>
+            </div>
+
+            <!-- Experience -->
+            <div class="resume-section">
+                <h3>Research & Engineering Experience</h3>
+                <div class="resume-item">
+                    <h4>Research Assistant</h4>
+                    <p class="resume-meta">BIOWEAR Lab, CCNY | October 2025 - Present</p>
+                    <ul>
+                        <li>Develop Arduino-controlled sensing for a wearable exoskeleton, measuring resistance and force at multiple points</li>
+                        <li>Design sensor interconnections and multiplexer layouts to interface many sensors with one microcontroller</li>
+                        <li>Model and refine sensor and electronics enclosures in 3D CAD for protection, ergonomics, and assembly</li>
+                        <li>Support data acquisition, basic signal processing, and documentation of tests and results</li>
+                    </ul>
+                </div>
+
+                <div class="resume-item">
+                    <h4>Research Student</h4>
+                    <p class="resume-meta">MobilizeGreen Fellowship, CCNY | June 2025 - August 2025</p>
+                    <ul>
+                        <li>Simulated and optimized LiDAR optical systems using Zemax and MATLAB</li>
+                        <li>Collected and analyzed experimental data to select optimal optical configurations</li>
+                        <li>Compared simulated and measured results and recommended design adjustments</li>
+                        <li>Presented methods, results, and trade-offs in a final research presentation</li>
+                    </ul>
+                </div>
+
+                <div class="resume-item">
+                    <h4>Research Student</h4>
+                    <p class="resume-meta">NSF REU Program, CCNY | June 2024 - May 2025</p>
+                    <ul>
+                        <li>Improved LiDAR accuracy using Varioptic liquid lenses and a two-lens system</li>
+                        <li>Optimized LabVIEW routines for real-time data acquisition and control</li>
+                        <li>Enhanced MATLAB signal-processing scripts for detecting small, fast-moving targets</li>
+                        <li>Produced technical reports and weekly presentations for a multidisciplinary team</li>
+                    </ul>
+                </div>
+
+                <div class="resume-item">
+                    <h4>Plumber Mechanic</h4>
+                    <p class="resume-meta">Real Plumbing Corp., New York, NY | February 2015 - June 2018</p>
+                    <ul>
+                        <li>Promoted from apprentice to mechanic within 12 months</li>
+                        <li>Installed and serviced plumbing systems in commercial and residential buildings to code</li>
+                        <li>Diagnosed and resolved flow, pressure, and temperature issues in piping systems</li>
+                        <li>Coordinated with general contractors, HVAC teams, and electricians to keep projects on schedule</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Skills -->
+            <div class="resume-section">
+                <h3>Technical Skills</h3>
+                <div class="resume-item">
+                    <ul>
+                        <li><strong>CAD Software:</strong> SolidWorks, Fusion 360, AutoCAD</li>
+                        <li><strong>Engineering Analysis:</strong> Zemax (optical systems), MATLAB, LabVIEW, Finite Element Analysis (FEA)</li>
+                        <li><strong>Programming:</strong> Python (TensorFlow), C++, Arduino</li>
+                        <li><strong>Engineering Skills:</strong> 3D CAD modeling, engineering analysis, experimental design, data acquisition and processing, heat transfer and thermal analysis, optics and sensor systems</li>
+                        <li><strong>Software:</strong> Microsoft Office Suite</li>
+                        <li><strong>Languages:</strong> English (fluent), Ukrainian (fluent)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <a href="resume.pdf" class="download-btn">Download PDF Resume</a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Get In Touch</h2>
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="contact-icon">📧</div>
+                <h3>Email</h3>
+                <a href="/cdn-cgi/l/email-protection#6706060e06150a080b02090c0827000a060e0b4904080a"><span class="__cf_email__" data-cfemail="cfaeaea6aebda2a0a3aaa1a4a08fa8a2aea6a3e1aca0a2">[email&#160;protected]</span></a>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">💼</div>
+                <h3>LinkedIn</h3>
+                <a href="https://linkedin.com/in/andrii-iarmolenko" target="_blank">linkedin.com/in/andrii-iarmolenko</a>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">📱</div>
+                <h3>Phone</h3>
+                <a href="tel:+13474176511">(347) 417-6511</a>
+            </div>
+        </div>
+    </section>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add active class to nav links on scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Update navbar on scroll
+        const navbar = document.querySelector('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
