@@ -17,8 +17,7 @@
             /* Section-specific colors - grey to black gradient */
             --bg-about: linear-gradient(180deg, #4a4a4a 0%, #3a3a3a 100%);
             --bg-projects: linear-gradient(180deg, #3a3a3a 0%, #2a2a2a 100%);
-            --bg-personal: linear-gradient(180deg, #2a2a2a 0%, #1a1a1a 100%);
-            --bg-resume: linear-gradient(180deg, #1a1a1a 0%, #0a0a0a 100%);
+            --bg-resume: linear-gradient(180deg, #2a2a2a 0%, #0a0a0a 100%);
             --bg-contact: linear-gradient(180deg, #0a0a0a 0%, #000000 100%);
         }
 
@@ -130,11 +129,6 @@
         #projects {
             background: var(--bg-projects);
             box-shadow: 0 -20px 60px rgba(0, 0, 0, 0.5);
-        }
-
-        #personal {
-            background: var(--bg-personal);
-            box-shadow: 0 -20px 60px rgba(0, 0, 0, 0.6);
         }
 
         #resume {
@@ -310,6 +304,84 @@
             border-radius: 8px;
             margin-bottom: 1.5rem;
             border: 1px solid rgba(0, 212, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .project-card img:hover {
+            border-color: var(--accent);
+            transform: scale(1.02);
+            box-shadow: 0 5px 20px rgba(0, 212, 255, 0.4);
+        }
+
+        /* Image Modal/Lightbox */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 0 50px rgba(0, 212, 255, 0.5);
+            animation: zoomIn 0.3s ease;
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 30px;
+            right: 50px;
+            color: var(--accent);
+            font-size: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .modal-close:hover {
+            color: var(--accent-warm);
+            transform: scale(1.2);
+        }
+
+        .modal-caption {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--text);
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 1.2rem;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            border: 1px solid var(--accent);
         }
 
         .project-card h3 {
@@ -508,7 +580,6 @@
         <ul>
             <li><a href="#about">About</a></li>
             <li><a href="#projects">Research & Projects</a></li>
-            <li><a href="#personal">Personal</a></li>
             <li><a href="#resume">Resume</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
@@ -545,7 +616,7 @@
         <div class="projects-grid">
             <div class="project-card">
                 <span class="project-number">01</span>
-                <img src="exo_boot.png" alt="Wearable Exoskeleton Sensor System">
+                <img src="exo_boot.png" alt="Wearable Exoskeleton Sensor System" onclick="openModal(this)">
                 <h3>Wearable Exoskeleton Sensor System</h3>
                 <p>
                     Developing Arduino-controlled sensing system for a wearable exoskeleton at BIOWEAR Lab. Designed 
@@ -563,7 +634,7 @@
 
             <div class="project-card">
                 <span class="project-number">02</span>
-                <img src="lidar_poster.jpg" alt="LiDAR Optical System Optimization">
+                <img src="lidar_poster.jpg" alt="LiDAR Optical System Optimization" onclick="openModal(this)">
                 <h3>LiDAR Optical System Optimization</h3>
                 <p>
                     Improved LiDAR accuracy using Varioptic liquid lenses and a two-lens optical system through NSF REU 
@@ -582,7 +653,7 @@
 
             <div class="project-card">
                 <span class="project-number">03</span>
-                <img src="bicycle.png" alt="Bicycle Frame FEA Analysis">
+                <img src="bicycle.png" alt="Bicycle Frame FEA Analysis" onclick="openModal(this)">
                 <h3>Bicycle Frame FEA Analysis</h3>
                 <p>
                     Created detailed 3D model of a bicycle frame for Finite Element Analysis course. Performed structural 
@@ -599,7 +670,7 @@
 
             <div class="project-card">
                 <span class="project-number">04</span>
-                <img src="phone_stand.png" alt="3D Printed Workshop Solutions">
+                <img src="phone_stand.png" alt="3D Printed Workshop Solutions" onclick="openModal(this)">
                 <h3>3D Printed Workshop Solutions</h3>
                 <p>
                     Designed and fabricated custom workspace organizers using CAD and 3D printing. Created phone stands, 
@@ -632,61 +703,6 @@
                     Presented research on using the Gini Coefficient to rank AI models, including methodology, 
                     statistical analysis, and interpretation of ranking metrics.
                 </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Personal Section -->
-    <section id="personal">
-        <h2>Beyond Engineering</h2>
-        
-        <div style="margin-bottom: 4rem;">
-            <h3 style="font-family: 'Orbitron', sans-serif; font-size: 1.8rem; color: var(--accent); margin-bottom: 2rem;">Personal Interests</h3>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <span class="project-number">🚁</span>
-                    <h3>FPV Drone Building & Flying</h3>
-                    <p>
-                        Build and fly various types of FPV (First-Person View) drones, from racing quads to freestyle rigs. 
-                        Experience with drone assembly, flight controller tuning, soldering electronics, and troubleshooting 
-                        technical issues. Passionate about the intersection of mechanical design, electronics, and flight dynamics.
-                    </p>
-                    <div class="project-tags">
-                        <span class="tag">Electronics</span>
-                        <span class="tag">Flight Dynamics</span>
-                        <span class="tag">Assembly</span>
-                        <span class="tag">Troubleshooting</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div>
-            <h3 style="font-family: 'Orbitron', sans-serif; font-size: 1.8rem; color: var(--accent); margin-bottom: 2rem;">Hobbies</h3>
-            <div class="contact-grid">
-                <div class="contact-card">
-                    <div class="contact-icon">🚴</div>
-                    <h3>Cycling</h3>
-                    <p style="color: var(--text-dim); padding: 0 1rem;">Exploring NYC and beyond on two wheels</p>
-                </div>
-
-                <div class="contact-card">
-                    <div class="contact-icon">🧗</div>
-                    <h3>Rock Climbing</h3>
-                    <p style="color: var(--text-dim); padding: 0 1rem;">Indoor bouldering and outdoor climbing adventures</p>
-                </div>
-
-                <div class="contact-card">
-                    <div class="contact-icon">⛺</div>
-                    <h3>Camping</h3>
-                    <p style="color: var(--text-dim); padding: 0 1rem;">Wilderness backpacking and outdoor exploration</p>
-                </div>
-
-                <div class="contact-card">
-                    <div class="contact-icon">🏂</div>
-                    <h3>Snowboarding</h3>
-                    <p style="color: var(--text-dim); padding: 0 1rem;">Carving down mountain slopes in winter</p>
-                </div>
             </div>
         </div>
     </section>
@@ -786,7 +802,7 @@
             <div class="contact-card">
                 <div class="contact-icon">📧</div>
                 <h3>Email</h3>
-                <a href="mailto:aaiarmolenko@gmail.com">aaiarmolenko@gmail.com</a>
+                <a href="/cdn-cgi/l/email-protection#bbdadad2dac9d6d4d7ded5d0d4fbdcd6dad2d795d8d4d6"><span class="__cf_email__" data-cfemail="3d5c5c545c4f505251585356527d5a505c5451135e5250">[email&#160;protected]</span></a>
             </div>
 
             <div class="contact-card">
@@ -803,7 +819,43 @@
         </div>
     </section>
 
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <span class="modal-close">&times;</span>
+        <img class="modal-content" id="modalImage">
+        <div class="modal-caption" id="modalCaption"></div>
+    </div>
+
     <script>
+        // Image Modal Functions
+        function openModal(img) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const caption = document.getElementById('modalCaption');
+            
+            modal.classList.add('active');
+            modalImg.src = img.src;
+            caption.textContent = img.alt;
+            
+            // Prevent body scroll when modal is open
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.remove('active');
+            
+            // Re-enable body scroll
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -841,13 +893,4 @@
                 }
             });
 
-            document.querySelectorAll('nav a').forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').slice(1) === current) {
-                    link.classList.add('active');
-                }
-            });
-        });
-    </script>
-</body>
-</html>
+            document.querySelectorAll('nav a').forEach(link 
